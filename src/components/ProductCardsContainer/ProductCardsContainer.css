@@ -1,5 +1,22 @@
-.product-cards-container {
+.product-cards__container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 48px;
+}
+
+.product-cards__form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 36px;
+}
+
+.product-cards__filter-label {
+  font-size: 18px;
+  cursor: pointer;
+  padding-bottom: 12px;
+}
+
+.product-cards__not-found-text {
+  font-size: 18px;
 }
