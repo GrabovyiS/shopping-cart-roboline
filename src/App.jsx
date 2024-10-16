@@ -1,12 +1,27 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import fetchProducts from "./helpers/fetchProducts";
 
 import ProductCardsContainer from "./components/ProductCardsContainer/ProductCardsContainer";
+import Loader from "./components/Loader/Loader";
+import ErrorScreen from "./components/Error/ErrorScreen";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [products, setProducts] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts()
+      .finally(() => setIsLoading(false))
+      .then((products) => {
+        setProducts(products);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+  }, []);
 
   // fetch cards, show loader, hide loader, show cards
 
@@ -18,70 +33,13 @@ function App() {
     <>
       <main>
         <h1>Список товаров</h1>
-        <ProductCardsContainer
-          products={[
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-            {
-              title: "Title",
-              cost: "100",
-              image:
-                "https://storage.omoloko.ru/img/products/Eskimo/593/1370.webp",
-            },
-          ]}
-        ></ProductCardsContainer>
+        {isLoading ? (
+          <Loader text={"Загружаем товары..."}></Loader>
+        ) : error ? (
+          <ErrorScreen error={error}></ErrorScreen>
+        ) : (
+          <ProductCardsContainer products={products}></ProductCardsContainer>
+        )}
       </main>
       <Footer></Footer>
     </>
