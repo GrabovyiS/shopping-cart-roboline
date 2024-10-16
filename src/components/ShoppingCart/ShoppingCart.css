@@ -1,0 +1,32 @@
+.shopping-cart {
+  position: relative;
+  padding: 10px 0;
+  min-width: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopping-cart__icon {
+  width: 40px;
+  height: 40px;
+}
+
+.shopping-cart__items-count {
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  background-color: rgb(227, 176, 131);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.shopping-cart__total-sum {
+  font-size: 14px;
+}

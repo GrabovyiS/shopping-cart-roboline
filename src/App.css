@@ -1,33 +1,40 @@
 main {
-  margin: 64px 256px;
+  margin: calc(64px + 72px) 256px;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 36px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.main-header__clear-button {
+  min-width: 120px;
+  max-width: fit-content;
+  flex: 1 1 120px;
 }
 
 @media screen and (width < 1280px) {
   main {
-    margin: 64px 128px;
+    margin: calc(64px + 72px) 128px;
   }
 }
 
 @media screen and (width < 800px) {
   main {
-    margin: 36px 64px;
+    margin: calc(36px + 72px) 64px;
+  }
+
+  .main-header {
+    margin-bottom: 32px;
   }
 }
 
 @media screen and (width < 520px) {
   main {
-    margin: 24px 24px;
-  }
-}
-
-h1 {
-  font-size: 48px;
-  margin-bottom: 32px;
-}
-
-@media screen and (width < 700px) {
-  h1 {
-    font-size: 36px;
-    margin-bottom: 24px;
+    margin: calc(24px + 72px) 24px;
   }
 }

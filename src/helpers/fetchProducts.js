@@ -12,8 +12,4 @@ async function fetchProducts() {
   }
 }
 
-fetchProducts()
-  .then((result) => console.log(result))
-  .catch((err) => console.log("haa error", err));
-
 export default fetchProducts;

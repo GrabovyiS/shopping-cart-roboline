@@ -1,16 +1,15 @@
 import "./ProductCardsContainer.css";
 import ProductCard from "../ProductCard/ProductCard";
 
-function ProductCardsContainer({ products }) {
+function ProductCardsContainer({ products, addToCartCallback }) {
   return (
     <div className="product-cards-container">
       {products.map((product) => {
         return (
           <ProductCard
             key={product.id}
-            title={product.title}
-            price={product.cost}
-            imgUrl={product.image}
+            product={product}
+            buttonCallback={addToCartCallback}
           ></ProductCard>
         );
       })}
