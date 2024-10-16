@@ -1,5 +1,33 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+main {
+  margin: 64px 256px;
+}
+
+@media screen and (width < 1100px) {
+  main {
+    margin: 64px 128px;
+  }
+}
+
+@media screen and (width < 700px) {
+  main {
+    margin: 64px 64px;
+  }
+}
+
+@media screen and (width < 420px) {
+  main {
+    margin: 24px 24px;
+  }
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 32px;
+}
+
+@media screen and (width < 700px) {
+  h1 {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
 }
